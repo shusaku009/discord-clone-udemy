@@ -3,7 +3,7 @@ import './Sidebar.scss'
 
 const Sidebar = () => {
   return (
-    <div className='Sidebar'>
+    <div className='sidebar'>
       <div className='sidebarLeft'>
         <div className='serverIcon'>
           <img src='./logo192.png' alt='Server Icon' />

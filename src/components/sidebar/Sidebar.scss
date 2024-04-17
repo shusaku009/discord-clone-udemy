@@ -1,23 +1,24 @@
-.Sidebar {
+.sidebar {
   display: flex;
   flex: 0.35;
   height: 100vh;
-  background-color: gray;
+  // TODO: 後でホームに移動させる
+  background-color: #33363d;
 
   .sidebarLeft {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 15px;
-    background-color: black;
+    background-color: #1a1c20;
     padding: 7px 15px;
 
     .serverIcon {
       width: 60px;
       height: 60px;
-      background-color: gray;
+      background-color: #33363d;
       border-radius: 9999px;
       position: relative;
+      margin-top: 7px;
 
       img {
         position: absolute;
@@ -27,5 +28,9 @@
         transform: translate(-50%, -50%);
       }
     }
+  }
+
+  .sidebarRight {
+    background-color: #2b2d33;
   }
 }
