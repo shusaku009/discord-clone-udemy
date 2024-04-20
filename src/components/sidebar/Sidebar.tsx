@@ -2,6 +2,7 @@ import React from 'react'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AddIcon from '@mui/icons-material/Add';
 import './Sidebar.scss'
+import SidebarChannel from './SidebarChannel';
 
 const Sidebar = () => {
   return (
@@ -28,6 +29,10 @@ const Sidebar = () => {
               <h4>プログラミングチャンネル</h4>
             </div>
             <AddIcon className='sidebarAddIcon' />
+          </div>
+
+          <div className='sidebarChannelList'>
+            <SidebarChannel />
           </div>
         </div>
       </div>
