@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AddIcon from '@mui/icons-material/Add';
 import MicIcon from '@mui/icons-material/Mic';
@@ -8,9 +8,19 @@ import './Sidebar.scss'
 import SidebarChannel from './SidebarChannel';
 import { auth } from '../../firebase';
 import { useAppSelector } from '../../app/hooks';
+import { onSnapshot } from "firebase/firestore";
 
 const Sidebar = () => {
   const user = useAppSelector((state => state.user))
+
+  const q = query(collection(db, "channels"));
+
+  useEffect(() => {
+    onSnapshot(q, (querySnapshot) => {
+      const channelsResults = [];
+      querySnapshot.docs.forEach((doc) => console.log(doc));
+    })
+  }, []);
 
   return (
     <div className='sidebar'>
