@@ -7,12 +7,15 @@ import AddCircleOutline from '@mui/icons-material/AddCircleOutline';
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 import GifIcon from '@mui/icons-material/Gif';
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
+import { useAppSelector } from '../../app/hooks';
 
 export default function Chat() {
+  const channelName = useAppSelector((state) => state.channel.channelName)
+
   return (
     <div className='chat'>
       {/* Chat Header */}
-      <ChatHeader />
+      <ChatHeader channelName={channelName} />
       {/* Chat Message */}
       <div className='chatMessage'>
         <ChatMessage />
