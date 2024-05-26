@@ -1,5 +1,7 @@
 import { DocumentData } from "firebase/firestore";
 import React from "react";
+import { useAppDispatch } from "../../app/hooks";
+import { setChannelInfo } from "../../features/channelSlice";
 import "./SidebarChannel.scss";
 
 type Props = {
@@ -9,7 +11,17 @@ type Props = {
 
 const SidebarChannel = (props: Props) => {
   const { id, channel } = props;
-  return (<div className="sidebarChannel">
+  const dispatch = useAppDispatch();
+
+  return (<div className="sidebarChannel" onClick={
+    () =>
+      dispatch(
+        setChannelInfo({
+          channelId: id,
+          channelName: channel.channelName,
+        })
+      )
+  }>
     <h4><span className="sidebarChannelHash">#</span>{channel.channel.channelName}</h4>
   </div>
   )
