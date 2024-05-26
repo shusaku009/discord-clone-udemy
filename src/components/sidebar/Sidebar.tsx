@@ -13,7 +13,7 @@ import useCollection from '../../hooks/useCollection';
 
 
 const Sidebar = () => {
-  const user = useAppSelector((state) => state.user)
+  const user = useAppSelector((state) => state.user.user)
   const { documents: channels } = useCollection("channels")
 
   return (

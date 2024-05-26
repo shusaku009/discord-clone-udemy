@@ -18,7 +18,7 @@ const SidebarChannel = (props: Props) => {
       dispatch(
         setChannelInfo({
           channelId: id,
-          channelName: channel.channelName,
+          channelName: channel.channel.channelName,
         })
       )
   }>
