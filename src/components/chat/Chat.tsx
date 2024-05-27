@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Chat.scss'
 import ChatHeader from './ChatHeader'
 import ChatMessage from './ChatMessage';
@@ -10,7 +10,12 @@ import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 import { useAppSelector } from '../../app/hooks';
 
 export default function Chat() {
+  const [inputText, setInputText] = useState<string>('');
+
   const channelName = useAppSelector((state) => state.channel.channelName)
+  const sendMessage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+  };
 
   return (
     <div className='chat'>
@@ -28,8 +33,8 @@ export default function Chat() {
       <div className='chatInput'>
         <AddCircleOutlineIcon />
         <form>
-          <input type="text" placeholder="#Udemyへメッセージを送信" />
-          <button type="submit" className='chatInputButton'>送信</button>
+          <input type="text" placeholder="#Udemyへメッセージを送信" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputText(e.target.value)} />
+          <button type="submit" className='chatInputButton' onClick={(e: React.ChangeEvent<HTMLInputElement>) => sendMessage(e)}>送信</button>
         </form>
 
         <div className='chatInputIcons'>
