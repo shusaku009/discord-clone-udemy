@@ -64,11 +64,9 @@ export default function Chat() {
       <ChatHeader channelName={channelName} />
       {/* Chat Message */}
       <div className='chatMessage'>
-        <ChatMessage />
-        <ChatMessage />
-        <ChatMessage />
-        <ChatMessage />
-        <ChatMessage />
+        {messages.map((message, index) => (
+          <ChatMessage key={index} message={message.message} timestamp={message.timestamp} user={message.user} />
+        ))}
       </div>
       {/* Chat Input */}
       <div className='chatInput'>
@@ -86,6 +84,6 @@ export default function Chat() {
           <EmojiEmotionsIcon />
         </div>
       </div>
-    </div>
+    </div >
   )
 }
