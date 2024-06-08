@@ -8,7 +8,7 @@ import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 import GifIcon from '@mui/icons-material/Gif';
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 import { useAppSelector } from '../../app/hooks';
-import { addDoc, collection, CollectionReference, DocumentData, DocumentReference, onSnapshot, serverTimestamp, } from 'firebase/firestore';
+import { addDoc, collection, CollectionReference, DocumentData, DocumentReference, onSnapshot, orderBy, query, serverTimestamp, } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { async } from '@firebase/util';
 import { Timestamp } from 'firebase/firestore';
@@ -33,7 +33,10 @@ export default function Chat() {
 
   useEffect(() => {
     let collectionRef = collection(db, "channels", String(channelId), "messages")
-    onSnapshot(collectionRef, (snapshot) => {
+
+    const collectionRevOrderBy = query(collectionRef, orderBy("timestamp", "desc"))
+
+    onSnapshot(collectionRevOrderBy, (snapshot) => {
       let results: Messages[] = [];
       snapshot.docs.forEach((doc) => {
         results.push({
